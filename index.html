@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>VoteVerse — Online Elections</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+
+  <div class="background-glow glow-one"></div>
+  <div class="background-glow glow-two"></div>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+
+    <div class="logo">
+      <div class="logo-icon">✓</div>
+
+      <span>Vote<span class="gradient-text">Verse</span></span>
+    </div>
+
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#how">How it works</a>
+      <a href="#about">About</a>
+    </div>
+
+    <button
+      class="nav-button"
+      onclick="showAuth()"
+    >
+      Get Started
+    </button>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <main id="home">
+
+    <section class="hero">
+
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        The future of online voting
+      </div>
+
+      <h1>
+        Your vote.
+        <br />
+
+        <span class="gradient-text">
+          Your voice.
+        </span>
+      </h1>
+
+      <p class="hero-description">
+        Create, manage and participate in secure online
+        elections — from school elections to organizations
+        and custom voting events.
+      </p>
+
+      <div class="hero-buttons">
+
+        <button
+          class="primary-button"
+          onclick="showAuth('voter')"
+        >
+          🗳️ Cast a Vote
+        </button>
+
+        <button
+          class="secondary-button"
+          onclick="showAuth('admin')"
+        >
+          ⚡ Create an Election
+        </button>
+
+      </div>
+
+      <div class="trust-row">
+
+        <div>
+          <strong>01</strong>
+          <span>Simple</span>
+        </div>
+
+        <div>
+          <strong>02</strong>
+          <span>Fast</span>
+        </div>
+
+        <div>
+          <strong>03</strong>
+          <span>Secure</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="features" id="how">
+
+      <div class="section-heading">
+
+        <span>POWERFUL & SIMPLE</span>
+
+        <h2>
+          Everything you need
+          <br />
+          to run an election.
+        </h2>
+
+      </div>
+
+
+      <div class="feature-grid">
+
+        <div class="feature-card">
+
+          <div class="feature-icon blue">
+            🏛️
+          </div>
+
+          <h3>Any Election</h3>
+
+          <p>
+            Political, school, student government,
+            organization or completely custom.
+          </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+          <div class="feature-icon purple">
+            🔗
+          </div>
+
+          <h3>One Simple Link</h3>
+
+          <p>
+            Give voters a link or voting code.
+            No complicated setup.
+          </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+          <div class="feature-icon green">
+            🛡️
+          </div>
+
+          <h3>One Vote</h3>
+
+          <p>
+            Database-level controls help prevent
+            duplicate ballot submissions.
+          </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+          <div class="feature-icon orange">
+            📊
+          </div>
+
+          <h3>Live Results</h3>
+
+          <p>
+            Track turnout and view election results
+            from your admin dashboard.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+      <div class="about-card">
+
+        <div class="about-number">
+          01
+        </div>
+
+        <div>
+
+          <span class="eyebrow">
+            BUILT FOR EVERYONE
+          </span>
+
+          <h2>
+            Voting shouldn't
+            <span class="gradient-text">
+              feel complicated.
+            </span>
+          </h2>
+
+          <p>
+            VoteVerse gives administrators powerful
+            election tools while keeping the voter
+            experience incredibly simple.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- AUTH MODAL -->
+
+  <div
+    class="modal hidden"
+    id="authModal"
+  >
+
+    <div class="modal-backdrop"
+      onclick="closeModal()">
+    </div>
+
+    <div class="modal-card">
+
+      <button
+        class="close-button"
+        onclick="closeModal()"
+      >
+        ×
+      </button>
+
+      <div class="modal-icon">
+        ⚡
+      </div>
+
+      <h2>
+        Welcome to
+        <span class="gradient-text">
+          VoteVerse
+        </span>
+      </h2>
+
+      <p>
+        Choose how you want to continue.
+      </p>
+
+
+      <button
+        class="role-card"
+        onclick="openAdminLogin()"
+      >
+
+        <div class="role-icon">
+          🛠️
+        </div>
+
+        <div class="role-text">
+
+          <strong>I'm an Admin</strong>
+
+          <span>
+            Create and manage elections
+          </span>
+
+        </div>
+
+        <span>→</span>
+
+      </button>
+
+
+      <button
+        class="role-card"
+        onclick="openVoterLogin()"
+      >
+
+        <div class="role-icon voter">
+          🗳️
+        </div>
+
+        <div class="role-text">
+
+          <strong>I'm a Voter</strong>
+
+          <span>
+            Enter a code and cast my vote
+          </span>
+
+        </div>
+
+        <span>→</span>
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- LOGIN MODAL -->
+
+  <div
+    class="modal hidden"
+    id="loginModal"
+  >
+
+    <div
+      class="modal-backdrop"
+      onclick="closeLogin()"
+    ></div>
+
+    <div class="modal-card login-card">
+
+      <button
+        class="close-button"
+        onclick="closeLogin()"
+      >
+        ×
+      </button>
+
+      <div class="modal-icon">
+        🔐
+      </div>
+
+      <h2 id="loginTitle">
+        Admin Login
+      </h2>
+
+      <p id="loginSubtitle">
+        Sign in to manage your elections.
+      </p>
+
+
+      <div id="adminLogin">
+
+        <input
+          id="email"
+          type="email"
+          placeholder="Email address"
+        />
+
+        <input
+          id="password"
+          type="password"
+          placeholder="Password"
+        />
+
+        <button
+          class="primary-button full"
+          onclick="adminLogin()"
+        >
+          Sign In →
+        </button>
+
+        <p class="switch-text">
+          Don't have an account?
+
+          <button onclick="adminSignup()">
+            Create one
+          </button>
+        </p>
+
+      </div>
+
+
+      <div
+        id="voterLogin"
+        class="hidden"
+      >
+
+        <input
+          id="votingCode"
+          type="text"
+          placeholder="Enter voting code"
+          maxlength="12"
+        />
+
+        <button
+          class="primary-button full"
+          onclick="findElection()"
+        >
+          Continue →
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- SUPABASE -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
