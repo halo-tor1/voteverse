@@ -1,4 +1,4 @@
-* {
+here is the current code * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -151,9 +151,11 @@ body {
       #c084fc
     );
 
+  background-clip: text;
   -webkit-background-clip: text;
 
   color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .nav-links {
