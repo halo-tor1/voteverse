@@ -1,441 +1,124 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-
-  <title>VoteVerse — Online Elections</title>
-
-  <link rel="stylesheet" href="style.css" />
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  />
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  />
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VoteVerse — simple, transparent online voting.">
+  <title>VoteVerse — Your voice, counted</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#" onclick="showHome(); return false;" aria-label="VoteVerse home">
+        <span class="brand-mark">✓</span>
+        <span>Vote<span class="brand-accent">Verse</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#discover">Discover</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#about">About</a>
+      </nav>
+      <button class="button button-small button-dark" onclick="openAuth('admin')">Admin access <span>↗</span></button>
+    </header>
 
-  <div class="background-glow glow-one"></div>
-  <div class="background-glow glow-two"></div>
-
-  <!-- NAVBAR -->
-
-  <nav class="navbar">
-
-    <div class="logo">
-      <div class="logo-icon">✓</div>
-
-      <span>Vote<span class="gradient-text">Verse</span></span>
-    </div>
-
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#how">How it works</a>
-      <a href="#about">About</a>
-    </div>
-
-    <button
-      class="nav-button"
-      onclick="showAuth()"
-    >
-      Get Started
-    </button>
-
-  </nav>
-
-
-  <!-- HERO -->
-
-  <main id="home">
-
-    <section class="hero">
-
-      <div class="hero-badge">
-        <span class="pulse-dot"></span>
-        The future of online voting
-      </div>
-
-      <h1>
-        Your vote.
-        <br />
-
-        <span class="gradient-text">
-          Your voice.
-        </span>
-      </h1>
-
-      <p class="hero-description">
-        Create, manage and participate in secure online
-        elections — from school elections to organizations
-        and custom voting events.
-      </p>
-
-      <div class="hero-buttons">
-
-        <button
-          class="primary-button"
-          onclick="showAuth('voter')"
-        >
-          🗳️ Cast a Vote
-        </button>
-
-        <button
-          class="secondary-button"
-          onclick="showAuth('admin')"
-        >
-          ⚡ Create an Election
-        </button>
-
-      </div>
-
-      <div class="trust-row">
-
-        <div>
-          <strong>01</strong>
-          <span>Simple</span>
-        </div>
-
-        <div>
-          <strong>02</strong>
-          <span>Fast</span>
-        </div>
-
-        <div>
-          <strong>03</strong>
-          <span>Secure</span>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- FEATURES -->
-
-    <section class="features" id="how">
-
-      <div class="section-heading">
-
-        <span>POWERFUL & SIMPLE</span>
-
-        <h2>
-          Everything you need
-          <br />
-          to run an election.
-        </h2>
-
-      </div>
-
-
-      <div class="feature-grid">
-
-        <div class="feature-card">
-
-          <div class="feature-icon blue">
-            🏛️
+    <main id="app">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="live-dot"></span> Open, simple, and transparent</div>
+          <h1>Your voice.<br><em>Your <span>choice.</span></em></h1>
+          <p class="hero-lede">A calmer way to participate in the decisions that shape your school, community, and future.</p>
+          <div class="hero-actions">
+            <button class="button button-primary" onclick="openAuth('voter')">Find an election <span>→</span></button>
+            <button class="text-button" onclick="document.querySelector('#how-it-works').scrollIntoView({behavior:'smooth'})">See how it works <span>↓</span></button>
           </div>
-
-          <h3>Any Election</h3>
-
-          <p>
-            Political, school, student government,
-            organization or completely custom.
-          </p>
-
-        </div>
-
-
-        <div class="feature-card">
-
-          <div class="feature-icon purple">
-            🔗
+          <div class="hero-proof">
+            <div class="avatar-stack"><i>J</i><i>M</i><i>A</i><i class="more">+</i></div>
+            <span>Join voters making their<br><strong>voice count.</strong></span>
           </div>
-
-          <h3>One Simple Link</h3>
-
-          <p>
-            Give voters a link or voting code.
-            No complicated setup.
-          </p>
-
         </div>
-
-
-        <div class="feature-card">
-
-          <div class="feature-icon green">
-            🛡️
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="paper-card">
+            <span class="paper-kicker">CURRENT POLL</span>
+            <span class="paper-title">Who should lead<br>the student council?</span>
+            <div class="paper-choice selected"><span class="choice-dot"></span><b>Amara Okafor</b><strong>54%</strong></div>
+            <div class="paper-choice"><span class="choice-dot"></span><b>David Mensah</b><strong>31%</strong></div>
+            <div class="paper-choice"><span class="choice-dot"></span><b>Fatima Bello</b><strong>15%</strong></div>
+            <div class="paper-footer"><span>2,481 votes</span><span class="mini-check">✓</span></div>
           </div>
-
-          <h3>One Vote</h3>
-
-          <p>
-            Database-level controls help prevent
-            duplicate ballot submissions.
-          </p>
-
+          <div class="floating-note note-top">ONE PERSON<br><strong>ONE VOTE</strong></div>
+          <div class="floating-note note-bottom">Make it<br><strong>count.</strong> <span>↗</span></div>
         </div>
+      </section>
 
+      <section class="ticker" aria-label="VoteVerse benefits">
+        <span>BUILT FOR REAL DECISIONS</span><i></i><span>PRIVATE BY DESIGN</span><i></i><span>ONE CLEAR CHOICE</span><i></i><span>RESULTS YOU CAN TRUST</span>
+      </section>
 
-        <div class="feature-card">
-
-          <div class="feature-icon orange">
-            📊
-          </div>
-
-          <h3>Live Results</h3>
-
-          <p>
-            Track turnout and view election results
-            from your admin dashboard.
-          </p>
-
+      <section class="discover section-wrap" id="discover">
+        <div class="section-heading">
+          <div><span class="section-number">01 / DISCOVER</span><h2>What matters<br><em>to you?</em></h2></div>
+          <p>Explore active elections and conversations from your community. Choose a category to find your next ballot.</p>
         </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section class="about" id="about">
-
-      <div class="about-card">
-
-        <div class="about-number">
-          01
+        <div class="category-tabs" role="tablist">
+          <button class="category-tab active" data-category="all" onclick="filterHome('all', this)">All topics</button>
+          <button class="category-tab" data-category="school" onclick="filterHome('school', this)">Schools</button>
+          <button class="category-tab" data-category="politics" onclick="filterHome('politics', this)">Politics</button>
+          <button class="category-tab" data-category="others" onclick="filterHome('others', this)">Others</button>
         </div>
-
-        <div>
-
-          <span class="eyebrow">
-            BUILT FOR EVERYONE
-          </span>
-
-          <h2>
-            Voting shouldn't
-            <span class="gradient-text">
-              feel complicated.
-            </span>
-          </h2>
-
-          <p>
-            VoteVerse gives administrators powerful
-            election tools while keeping the voter
-            experience incredibly simple.
-          </p>
-
+        <div id="homeContent" class="discover-grid">
+          <div class="loading-card">Loading elections and suggested posts…</div>
         </div>
+      </section>
 
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- AUTH MODAL -->
-
-  <div
-    class="modal hidden"
-    id="authModal"
-  >
-
-    <div class="modal-backdrop"
-      onclick="closeModal()">
-    </div>
-
-    <div class="modal-card">
-
-      <button
-        class="close-button"
-        onclick="closeModal()"
-      >
-        ×
-      </button>
-
-      <div class="modal-icon">
-        ⚡
-      </div>
-
-      <h2>
-        Welcome to
-        <span class="gradient-text">
-          VoteVerse
-        </span>
-      </h2>
-
-      <p>
-        Choose how you want to continue.
-      </p>
-
-
-      <button
-        class="role-card"
-        onclick="openAdminLogin()"
-      >
-
-        <div class="role-icon">
-          🛠️
+      <section class="how section-wrap" id="how-it-works">
+        <div class="section-heading compact"><div><span class="section-number">02 / HOW IT WORKS</span><h2>Just three<br><em>simple steps.</em></h2></div></div>
+        <div class="steps-grid">
+          <article class="step"><span>01</span><div class="step-icon">⌕</div><h3>Find your election</h3><p>Use the access code shared by your organizer to find the right ballot.</p></article>
+          <article class="step"><span>02</span><div class="step-icon">✦</div><h3>Make your choices</h3><p>Review every candidate and submit one clear, considered ballot.</p></article>
+          <article class="step"><span>03</span><div class="step-icon">✓</div><h3>See your impact</h3><p>Once the election closes, results are ready to be shared transparently.</p></article>
         </div>
+      </section>
 
-        <div class="role-text">
+      <section class="about-strip section-wrap" id="about">
+        <div><span class="section-number">03 / OUR PROMISE</span><h2>Every decision<br>deserves a <em>voice.</em></h2></div>
+        <p>VoteVerse gives organizers the tools to run focused elections and gives voters a clear, respectful way to participate. No noise. No confusion. Just your choice.</p>
+      </section>
+    </main>
 
-          <strong>I'm an Admin</strong>
-
-          <span>
-            Create and manage elections
-          </span>
-
-        </div>
-
-        <span>→</span>
-
-      </button>
-
-
-      <button
-        class="role-card"
-        onclick="openVoterLogin()"
-      >
-
-        <div class="role-icon voter">
-          🗳️
-        </div>
-
-        <div class="role-text">
-
-          <strong>I'm a Voter</strong>
-
-          <span>
-            Enter a code and cast my vote
-          </span>
-
-        </div>
-
-        <span>→</span>
-
-      </button>
-
-    </div>
-
+    <footer><a class="brand" href="#"><span class="brand-mark">✓</span><span>Vote<span class="brand-accent">Verse</span></span></a><span>Built for better decisions.</span><span>© 2026 VoteVerse</span></footer>
   </div>
 
-
-  <!-- LOGIN MODAL -->
-
-  <div
-    class="modal hidden"
-    id="loginModal"
-  >
-
-    <div
-      class="modal-backdrop"
-      onclick="closeLogin()"
-    ></div>
-
-    <div class="modal-card login-card">
-
-      <button
-        class="close-button"
-        onclick="closeLogin()"
-      >
-        ×
-      </button>
-
-      <div class="modal-icon">
-        🔐
+  <div id="authModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="modal-backdrop" onclick="closeAuth()"></div>
+    <div class="modal-card auth-card">
+      <button class="modal-close" onclick="closeAuth()" aria-label="Close">×</button>
+      <div class="modal-kicker">WELCOME TO VOTEVERSE</div>
+      <h2 id="authTitle">Make a difference.</h2>
+      <p id="authSubtitle">Sign in as an administrator to create an election.</p>
+      <div class="auth-switch"><button id="adminTab" class="active" onclick="setAuthMode('admin')">Admin</button><button id="voterTab" onclick="setAuthMode('voter')">Voter</button></div>
+      <div id="adminAuth">
+        <label>Email address<input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com"></label>
+        <label>Password<input id="authPassword" type="password" autocomplete="current-password" placeholder="At least 6 characters"></label>
+        <button class="button button-primary full" onclick="adminSignIn()">Sign in <span>→</span></button>
+        <p class="form-note">New organizer? <button class="inline-button" onclick="adminSignUp()">Create an admin account</button></p>
       </div>
-
-      <h2 id="loginTitle">
-        Admin Login
-      </h2>
-
-      <p id="loginSubtitle">
-        Sign in to manage your elections.
-      </p>
-
-
-      <div id="adminLogin">
-
-        <input
-          id="email"
-          type="email"
-          placeholder="Email address"
-        />
-
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-        />
-
-        <button
-          class="primary-button full"
-          onclick="adminLogin()"
-        >
-          Sign In →
-        </button>
-
-        <p class="switch-text">
-          Don't have an account?
-
-          <button onclick="adminSignup()">
-            Create one
-          </button>
-        </p>
-
+      <div id="voterAuth" class="hidden">
+        <label>Election access code<input id="accessCode" class="code-input" type="text" maxlength="12" placeholder="e.g. VOTE2026" oninput="this.value=this.value.toUpperCase()"></label>
+        <p class="form-note">Ask your election organizer for the unique code.</p>
+        <button class="button button-primary full" onclick="findElection()">Continue to ballot <span>→</span></button>
       </div>
-
-
-      <div
-        id="voterLogin"
-        class="hidden"
-      >
-
-        <input
-          id="votingCode"
-          type="text"
-          placeholder="Enter voting code"
-          maxlength="12"
-        />
-
-        <button
-          class="primary-button full"
-          onclick="findElection()"
-        >
-          Continue →
-        </button>
-
-      </div>
-
+      <div id="authMessage" class="inline-message hidden"></div>
     </div>
-
   </div>
 
-
-  <!-- SUPABASE -->
-
+  <div id="toast" class="toast" role="status"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
   <script src="app.js"></script>
-
 </body>
 </html>

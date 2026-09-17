@@ -118,10 +118,13 @@ async function adminSignIn() {
   if (error) return setAuthMessage(error.message);
   state.user = data.user; await loadProfile();
   if (state.profile?.role !== "admin") {
-    await db.rpc("claim_first_admin");
+    const { error: claimError } = await db.rpc("claim_first_admin");
+    if (claimError && claimError.code === "42883") {
+      return setAuthMessage("Supabase setup is incomplete. Run schema.sql in your Supabase SQL Editor, then sign in again.");
+    }
     await loadProfile();
   }
-  if (state.profile?.role !== "admin") return setAuthMessage("This account is a voter. The first account in this Supabase project becomes the admin; ask the current admin to sign in.");
+  if (state.profile?.role !== "admin") return setAuthMessage("This account is a voter. Only the first account in this Supabase project can become the admin.");
   closeAuth(); renderAdminDashboard();
 }
 async function adminSignUp() {
@@ -129,7 +132,7 @@ async function adminSignUp() {
   if (!email || !password || password.length < 6) return setAuthMessage("Use a valid email and a password of at least 6 characters.");
   const { error } = await db.auth.signUp({ email, password, options: { data: { full_name: "Election organizer" }, emailRedirectTo: window.location.href } });
   if (error) return setAuthMessage(error.message);
-  setAuthMessage("Account created. Confirm your email, then sign in. The first account in this Supabase project becomes the admin automatically.", true);
+  setAuthMessage("Account created in Supabase. Confirm your email, then sign in. After schema.sql is applied, the first account becomes admin automatically.", true);
 }
 async function signOut() { await db.auth.signOut(); state.user = null; state.profile = null; showHome(); }
 
